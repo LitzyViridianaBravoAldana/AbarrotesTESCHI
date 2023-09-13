@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from api.views import Home
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    #se comenta para que no se inicie con django directamente para así visualizar el trabajo que realizamos
+    #path('admin/', admin.site.urls),
+    #el siguiente comando se utiliza para que se visualice la ventana del index
+    path('',Home.as_view(),name='index'),
 ]
