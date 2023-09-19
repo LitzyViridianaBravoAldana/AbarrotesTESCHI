@@ -8,7 +8,7 @@ class Usuario(models.Model):
     Nombre = models.TextField(db_column='Nombre')
     Apellido_Pa = models.CharField(max_length=20,db_column='Apellido_P')
     Apellido_Ma = models.CharField(max_length=20,db_column='Apellido_M')
-    Telefono = models.IntegerField(max_length=10,db_column='Telefono')
+    Telefono = models.IntegerField(db_column='Telefono')
     Correo = models.EmailField(db_column='Correo')
     class Meta:
         db_table='Usuarios'
