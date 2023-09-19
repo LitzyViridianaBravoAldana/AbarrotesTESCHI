@@ -31,14 +31,14 @@ class Idioma(models.Model):
         db_table='Idiomas'
 class Editorial(models.Model):
     Id_Editorial = models.AutoField(primary_key=True,db_column='Id_Editorial')
-    fk_pais = models.ForeignKey(Pais,on_delete=models.CASCADE,default=1,db_column='fk_pais')
+    Fk_Id_pais = models.ForeignKey(Pais,on_delete=models.CASCADE,default=1,db_column='fk_pais')
     Nombre_Editorial = models.TextField(db_column='Nombre_Editorial')
     Sitio_Web = models.URLField(db_column='Sitio_Web')
     class Meta:
         db_table='Editoriales'
 class Autor(models.Model):
     Id_Autor = models.AutoField(primary_key=True,db_column='Id_Autor')
-    Fk_pais = models.ForeignKey(Pais,on_delete=models.CASCADE,default=1,db_column='fk_pais')
+    Fk_Id_pais = models.ForeignKey(Pais,on_delete=models.CASCADE,default=1,db_column='fk_pais')
     Nombre = models.CharField(max_length=25,db_column='Nombre')
     Apellido_P = models.CharField(max_length=20,db_column='Apellido_P')
     Apellido_M = models.CharField(max_length=20,db_column='Apellido_M')
@@ -56,3 +56,25 @@ class Libro(models.Model):
     Sinopsis = models.CharField(max_length=300,db_column='Sinopsis')
     class Meta:
         db_table='Libros'
+class Resena(models.Model):
+    Id_Resena = models.AutoField(primary_key=True,db_column='Id_Resena')
+    Fk_Id_Libro = models.ForeignKey(Libro,on_delete=models.CASCADE,default=1,db_column='Fk_Id_Libro')
+    Fk_Id_Usuario = models.ForeignKey(Usuario,on_delete=models.CASCADE,default=1,db_column='Fk_Id_Usuario')
+    calificacion = models.IntegerField(db_column='Calificacion')
+    Comentario = models.CharField(max_length=150,db_column='Comentario')
+    class Meta:
+        db_table='Resena'
+class Lista_Deseos(models.Model):
+    id_Lista_Deseos = models.AutoField(primary_key=True,db_column='Id_Lista_Deseos')
+    Fk_Id_Libro = models.ForeignKey(Libro,on_delete=models.CASCADE,default=1,db_column='Fk_Id_Libro')
+    Fk_Id_Usuario = models.ForeignKey(Usuario,on_delete=models.CASCADE,default=1,db_column='Fk_Id_Usuario')
+    Fecha_Agregado = models.DateTimeField(db_column='Fecha_Agregado')
+    class Meta:
+        db_table='Lista_Deseados'
+class Bibilioteca(models.Model):
+    Id_Biblioteca = models.AutoField(primary_key=True,db_column='Id_Biblioteca')
+    Fk_Id_Libro = models.ForeignKey(Libro,on_delete=models.CASCADE,default=1,db_column='Fk_Id_Libro')
+    Fk_Id_Usuario = models.ForeignKey(Usuario,on_delete=models.CASCADE,default=1,db_column='Fk_Id_Usuario')
+    Fecha_Inicio = models.DateTimeField(db_column='Fecha_Inicio')
+    class Meta:
+        db_table='Biblioteca'
