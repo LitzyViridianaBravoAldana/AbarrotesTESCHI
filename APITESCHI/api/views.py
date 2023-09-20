@@ -12,3 +12,8 @@ class sing_up(APIView):
     template_name="sign_up.html"
     def get(self,request):
         return render(request,self.template_name)
+    
+class index_9(APIView):
+    template_name="index_9.html"
+    def get(self,request):
+        return render(request,self.template_name)
