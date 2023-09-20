@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 # Create your views here.
 
 
-class Home(APIView):
-    template_name="index.html"
+class Sing_in(APIView):
+    template_name="sign-in.html"
     def get(self,request):
         return render(request,self.template_name)

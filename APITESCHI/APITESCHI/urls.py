@@ -22,4 +22,5 @@ urlpatterns = [
     #path('admin/', admin.site.urls),
     #el siguiente comando se utiliza para que se visualice la ventana del index
     path('',Home.as_view(),name='index'),
+    path('Sing_in/',Sing_in.as_view(),name='Sing_in'),
 ]
