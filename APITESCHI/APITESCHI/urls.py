@@ -1,29 +1,16 @@
-"""APITESCHI URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.contrib import admin
 from django.urls import path
-from api.views import sing_in
-from api.views import sing_up, index_9
+from api.views import sign_in, sign_up, index_9
 
 urlpatterns = [
-    #se comenta para que no se inicie con django directamente para así visualizar el trabajo que realizamos
-    #path('admin/', admin.site.urls),
-    #el siguiente comando se utiliza para que se visualice la ventana del index
-    #path('',Home.as_view(),name='index'),
-    path('sing_in.html/',sing_in.as_view(),name='sing_in'),
-    path('sign_up.html',sing_up.as_view(),name='sign_up'),
-    path('index_9.html/',index_9.as_view(),name='index_9'),
+    # Ruta para la página de inicio de sesión
+    path('sign_in.html', sign_in.as_view(), name='sign_in'),
+    
+    # Ruta para la página de registro
+    path('sign_up.html', sign_up.as_view(), name='sign_up'),
+    
+    # Ruta para la página index_9
+    path('index_9.html', index_9.as_view(), name='index_9'),
+    
+    # Ruta para la URL raíz (puede ser una de las páginas anteriores)
+    path('', index_9.as_view(), name='index_9_root'),
 ]
