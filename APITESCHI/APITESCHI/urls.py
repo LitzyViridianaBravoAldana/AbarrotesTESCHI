@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from api.views import sing_in
+from api.views import sing_up
 
 urlpatterns = [
     #se comenta para que no se inicie con django directamente para así visualizar el trabajo que realizamos
@@ -23,4 +24,5 @@ urlpatterns = [
     #el siguiente comando se utiliza para que se visualice la ventana del index
     #path('',Home.as_view(),name='index'),
     path('sing_in/',sing_in.as_view(),name='sing_in'),
+    path('sign_up/',sing_up.as_view(),name='sign_up'),
 ]

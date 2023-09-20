@@ -7,3 +7,8 @@ class sing_in(APIView):
     template_name="sign_in.html"
     def get(self,request):
         return render(request,self.template_name)
+    
+class sing_up(APIView):
+    template_name="sign_up.html"
+    def get(self,request):
+        return render(request,self.template_name)
