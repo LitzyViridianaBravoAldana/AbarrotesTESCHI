@@ -63,8 +63,73 @@ class genero1(APIView):
     def get(self,request):
         return render(request,self.template_name) 
     
+
+class genero2(APIView):
+    template_name="genero2.html"
+    def get(self,request):
+        return render(request,self.template_name) 
+    
+
+class genero3(APIView):
+    template_name="genero3.html"
+    def get(self,request):
+        return render(request,self.template_name) 
+    
+
+class genero4(APIView):
+    template_name="genero4.html"
+    def get(self,request):
+        return render(request,self.template_name) 
+    
+class genero5(APIView):
+    template_name="genero5.html"
+    def get(self,request):
+        return render(request,self.template_name) 
+    
+class genero6(APIView):
+    template_name="genero6.html"
+    def get(self,request):
+        return render(request,self.template_name) 
+    
+
+class genero7(APIView):
+    template_name="genero7.html"
+    def get(self,request):
+        return render(request,self.template_name) 
+    
+class genero8(APIView):
+    template_name="genero8.html"
+    def get(self,request):
+        return render(request,self.template_name) 
+    
+class genero9(APIView):
+    template_name="genero9.html"
+    def get(self,request):
+        return render(request,self.template_name) 
+    
+class genero10(APIView):
+    template_name="genero10.html"
+    def get(self,request):
+        return render(request,self.template_name) 
+    
+    
 class editorial1(APIView):
     template_name="editorial1.html"
+    def get(self,request):
+        return render(request,self.template_name) 
+    
+class editorial2(APIView):
+    template_name="editorial2.html"
+    def get(self,request):
+        return render(request,self.template_name) 
+
+class editorial3(APIView):
+    template_name="editorial3.html"
+    def get(self,request):
+        return render(request,self.template_name) 
+    
+class editorial4(APIView):
+    template_name="editorial4.html"
     def get(self,request):
         return render(request,self.template_name) 
     

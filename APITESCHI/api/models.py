@@ -78,3 +78,10 @@ class Bibilioteca(models.Model):
     Fecha_Inicio = models.DateTimeField(db_column='Fecha_Inicio')
     class Meta:
         db_table='Biblioteca'
+
+class Libro_has_Autor(models.Model):
+    Id_Libro_has_Autor = models.AutoField(primary_key=True,db_column='Id_Libro_has_Autor')
+    Fk_Id_Libro = models.ForeignKey(Libro,on_delete=models.CASCADE,db_column='Fk_Id_Libro')
+    Fk_Id_Autor = models.ForeignKey(Autor,on_delete=models.CASCADE,db_column='Fk_Id_Autor')
+    class Meta:
+        db_table='Libro_has_Autor'
