@@ -27,6 +27,7 @@
 </head>
 
 <body>
+	<form action="/sign_up/" method="post"></form>
 	<div class="preloader">
 		<img src="{% static 'images/preloader.svg'%}" alt="Pre-loader">
 	</div>
@@ -36,9 +37,9 @@
 	<section class="p-0 d-flex align-items-center">
 		<div class="container-fluid">
 			<div class="row">
-				<!-- left -->
+				<!-- left  lo que se encuentra dentro del recuadro verde-->
 				<div class="col-12 col-md-5 col-lg-4 d-md-flex align-items-center bg-grad vh-sm-100">
-					<div class="w-100 p-3 p-lg-5 all-text-white">
+					<div class="w-150 p-3 p-lg-5 all-text-white">
 						<div class="justify-content-center align-self-center">
 							<!-- SVG Logo Start -->
 							<svg class="logo-auth mb-4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMinYMid" width="325.656" height="100" viewBox="0 0 325.656 100">
@@ -58,6 +59,7 @@
 					</div>
 				</div>
 				<!-- Right FORMULARIO -->
+			
 				<div class="col-12 col-md-7 col-xl-8 mx-auto my-5">
 					<div class="row h-100">
 						<div class="col-12 col-md-10 col-lg-5 text-start mx-auto d-flex align-items-center">
@@ -67,54 +69,52 @@
 								<div class="form mt-4 ">
 									<div>
 										<p class="text-start mb-2">Nombre</p>
-										<span class="form-group"><input type="Name" class="form-control" placeholder="name"></span>
+										<span class="form-group"><input type="Name" name="Nombre" class="form-control" placeholder="Nombre Completo"></span>
 									</div>
 									<div>
 										<p class="text-start mb-2">Apellido Paterno</p>
-										<span class="form-group"><input type="Name" class="form-control" placeholder="Apellido Paterno"></span>
+										<span class="form-group"><input type="Name" name="ApellidoPa" class="form-control" placeholder="Apellido Paterno"></span>
 									</div>
 									<div>
 										<p class="text-start mb-2">Apellido Materno</p>
-										<span class="form-group"><input type="Name" class="form-control" placeholder="Apellido Materno"></span>
+										<span class="form-group"><input type="Name" name="ApellidoMa" class="form-control" placeholder="Apellido Materno"></span>
 									</div>
 									<div>
 										<p class="text-start mb-2">Correo Electronico</p>
-										<span class="form-group"><input type="email" class="form-control" placeholder="Correo Electronico"></span>
+										<span class="form-group"><input type="email" name="Correo" class="form-control" placeholder="Correo Electronico"></span>
 									</div>
 									<div>
 										<p class="text-start mb-2">Nobre de Usuario</p>
-										<span class="form-group"><input type="name" class="form-control" placeholder="Nombre de Usuario"></span>
+										<span class="form-group"><input type="name" name="Usuario" class="form-control" placeholder="Nombre de Usuario"></span>
 									</div>
 									<div>
 										<p class="text-start mb-2">Telefono</p>
-										<span class="form-group"><input type="number" class="form-control" placeholder="E-mail"></span>
+										<span class="form-group"><input type="number" name="Telefono" class="form-control" placeholder="Telefono"></span>
 									</div>
 									<div>
 										<div class="align-items-center">
 											<p class="text-start mb-2">Password</p>
 										</div>
-										<span class="form-group"><input type="password" class="form-control" placeholder="*********"></span>
+										<span class="form-group"><input type="password" name="Contra1" class="form-control" placeholder="*********"></span>
 									</div>
 									<div>
 										<div class="align-items-center">
-											<p class="text-start mb-2">Confirm Password</p>
+											<p class="text-start mb-2">Confirmar Password</p>
 										</div>
-										<span class="form-group"><input type="password" class="form-control" placeholder="*********"></span>
+										<span class="form-group"><input type="password" name="Contra2" class="form-control" placeholder="*********"></span>
 									</div>
 									<div class="custom-control custom-checkbox me-sm-2 mb-4 d-flex">
-										<input type="checkbox" class="form-check-input mb-0" id="exampleCheck1">
-									<label class="form-check-label ms-2" for="exampleCheck1">Al registrarte, aceptas los <a href="">Regresar al Menu</a></label>
+									<label class="form-check-label ms-2" for="exampleCheck1"><a href="{% url 'index_9'%}">Regresar al Menu</a></label>
 									</div>
-									<form action="sign_up.html" method="GET">
+									
 										<div class="row align-items-center g-0 m-0">
-											<div class="col-6"><span class="text-muted">¿ya tienes una sesion? <a href="sign_in.html">Ingresar</a></span></div>
+											<div class="col-6"><span class="text-muted">¿ya tienes una sesion? <a href="{% url 'sign_up'%}">Ingresar</a></span></div>
 											<div class="col-6 text-end"><button class="btn btn-dark ">REGISTRARME</button></div>
-	
-	
+			
 											
 										</div>
 
-									</form>
+									
 
 								</div>
 							</div>
@@ -135,6 +135,7 @@
 
 	<!--Template Functions-->
 	<script src="{% static 'js/functions.js'%}"></script>
+	</form>
 
 </body>
 

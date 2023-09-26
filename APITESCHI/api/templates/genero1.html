@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="en">
 
-<!-- Mirrored from wizixo.webestica.com/team.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Sep 2023 01:13:03 GMT -->
+<!-- Mirrored from wizixo.webestica.com/portfolio-grid-column-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Sep 2023 01:13:05 GMT -->
 <head>
 	<title>Wizixo | Creative Multipurpose Bootstrap Template</title>
 	<meta charset="utf-8">
@@ -18,13 +18,14 @@
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900%7CPlayfair+Display:400,400i,700,700i%7CRoboto:400,400i,500,700" rel="stylesheet">
 
 	<!-- Plugins CSS -->
-	<link rel="stylesheet" type="text/css" href="{% static 'font-awesome/css/all.min.css'%}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/font-awesome/css/all.min.css'%}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/themify-icons/css/themify-icons.css'%}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.min.css'%}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/glightbox/css/glightbox.css'%}">
 
 	<!-- Theme CSS -->
 	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}" />
-	
+
 </head>
 
 <body>
@@ -197,13 +198,13 @@
 						</li>
 						<!-- Menu item 3 Pages-->
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle active" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+							<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
 							<ul class="dropdown-menu" aria-labelledby="pagesMenu">
 								<li> <a class="dropdown-item" href="about-classic.html">About Classic</a></li>
 								<li> <a class="dropdown-item" href="about-advance.html">About Advance</a> </li>
 								<li> <a class="dropdown-item" href="service.html">Service</a> </li>
 								<li> <a class="dropdown-item" href="contact.html">Contact</a> </li>
-								<li> <a class="dropdown-item active" href="team.html">Team</a> </li>
+								<li> <a class="dropdown-item" href="team.html">Team</a> </li>
 								<li> <a class="dropdown-item" href="careers.html">Careers</a> </li>
 								<li> <a class="dropdown-item" href="careers-single.html">Careers single</a> </li>
 								<li class="dropdown-submenu">
@@ -223,9 +224,9 @@
 						</li>
 						<!-- Menu item 4 Portfolio-->
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="portfolioMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Portfolio</a>
+							<a class="nav-link dropdown-toggle active" href="#" id="portfolioMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Portfolio</a>
 							<ul class="dropdown-menu" aria-labelledby="portfolioMenu">
-								<li> <a class="dropdown-item" href="portfolio-grid-column-2.html">Portfolio Column 2</a> </li>
+								<li> <a class="dropdown-item active" href="portfolio-grid-column-2.html">Portfolio Column 2</a> </li>
 								<li> <a class="dropdown-item" href="portfolio-grid-column-3.html">Portfolio Column 3</a> </li>
 								<li> <a class="dropdown-item" href="portfolio-grid-column-4.html">Portfolio Column 4</a> </li>
 								<li> <a class="dropdown-item" href="portfolio-grid-column-5.html">Portfolio Column 5</a> </li>
@@ -321,185 +322,221 @@
 
 	<!-- =======================
 	Banner innerpage -->
-	<div class="bg-overlay-dark-2 bg-parallax pt-7 pb-10" style="background:url(assets/images/bg/08.jpg) no-repeat; background-size:cover; background-position: center center;">
+	<div class="text-center bg-overlay-dark-7 py-7" style="background:url(assets/images/bg/04.jpg) no-repeat; background-size:cover; background-position: center center;">
 		<div class="container">
 			<div class="row all-text-white">
-				<div class="col-md-12 align-self-center text-center position-relative">
-					<h1 class="fw-bold display-2 pt-4 pb-8 mb-8 mt-2">We're Superheroes</h1>
+				<div class="col-md-12 align-self-center">
+					<h1 class="fw-bold">Portfolio 2 Column</h1>
+					<h6 class="mb-5">Show your awesome work in 2 columns grid style</h6>
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb justify-content-center">
+							<li class="breadcrumb-item active"><a href="index.html"><i class="ti-home"></i> Home</a></li>
+							<li class="breadcrumb-item">Portfolio</li>
+						</ol>
+					</nav>
 				</div>
 			</div>
-		</div>
-		<div class="position-absolute bottom-0 start-0 w-100 mb-n3">
-			<svg width="100%" height="150" viewBox="0 0 500 150" preserveAspectRatio="none">
-				<path d="M0,150 L0,40 Q250,150 500,40 L580,150 Z" fill="white" />
-			</svg>
 		</div>
 	</div>
 	<!-- =======================
 	Banner innerpage -->
 
 	<!-- =======================
-	Team -->
-	<section class="team social-hover team-overlay">
+	Portfolio -->
+	<section class="portfolio pb-0">
 		<div class="container">
 			<div class="row">
-				<!-- Team item -->
-				<div class="col-12 col-sm-3 col-md-3">
-					<div class="team-item text-center">
-						<div class="team-avatar">
-							<img src="{% static 'images/team/01.jpg'%}" alt="">
+				<div class="col-md-12">
+					<div class="nav justify-content-center grid-menu" data-target=".filter-container">
+						<ul class="nav-tabs nav-tabs-style-2 text-center px-2 p-md-0 m-0 mb-4">
+							<li class="nav-filter mb-4"><a class="active" data-filter="*">All Works</a></li>
+							<li class="nav-filter mb-4"><a data-filter=".marketing">Marketing</a></li>
+							<li class="nav-filter mb-4"><a data-filter=".digital">Digital</a></li>
+							<li class="nav-filter mb-4"><a data-filter=".photo">Photography</a></li>
+						</ul>
+					</div>
+					<div class="portfolio-wrap grid items-2 items-padding filter-container" data-isotope='{ "layoutMode": "masonry" }'>
+						<!-- portfolio-card -->
+						<div class="portfolio-card grid-item digital">
+							<div class="portfolio-card-body">
+								<div class="portfolio-card-header">
+									<img src="{% static 'images/portfolio/01.jpg'%}" alt="">
+								</div>
+								<div class="portfolio-card-footer">
+									<a class="full-screen" href="{% static 'images/portfolio/01.jpg'%}" data-glightbox="" data-gallery="portfolio"><i class="ti-fullscreen"></i></a>
+									<h6 class="info-title"><a href="#" title="">Fly in time</a></h6>
+									<p>Branding, Watch</p>
+								</div>
+							</div>
 						</div>
-						<div class="team-desc">
-							<h5 class="team-name">Allen Smith</h5>
-							<span class="team-position">Founder</span>
-							<p>I am temporibus voluptatem odio odit ratione perferendis explicabo!</p>
-							<ul class="social-icons si-colored-on-hover">
-								<li class="social-icons-item social-facebook"><a class="social-icons-link" href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li class="social-icons-item social-instagram"><a class="social-icons-link" href="#"><i class="fab fa-instagram"></i></a></li>
-								<li class="social-icons-item social-twitter"><a class="social-icons-link" href="#"><i class="fab fa-twitter"></i></a></li>
-							</ul>
+						<!-- portfolio-card -->
+						<div class="portfolio-card grid-item photo">
+							<div class="portfolio-card-body">
+								<div class="portfolio-card-header">
+									<img src="{% static 'images/portfolio/02.jpg'%}" alt="">
+								</div>
+								<div class="portfolio-card-footer">
+									<a class="full-screen" href="{% static 'images/portfolio/02.jpg'$}" data-glightbox="" data-gallery="portfolio"><i class="ti-fullscreen"></i></a>
+									<h6 class="info-title"><a href="#" title="">Waiting window</a></h6>
+									<p>Photography</p>
+								</div>
+							</div>
+						</div>
+						<!-- portfolio-card -->
+						<div class="portfolio-card grid-item digital marketing">
+							<div class="portfolio-card-body">
+								<div class="portfolio-card-header">
+									<img src="{% static 'images/portfolio/03.jpg'%}" alt="">
+								</div>
+								<div class="portfolio-card-footer">
+									<a class="full-screen" href="{% static 'images/portfolio/03.jpg'%}" data-glightbox="" data-gallery="portfolio"><i class="ti-fullscreen"></i></a>
+									<h6 class="info-title"><a href="#" title="">Green Book</a></h6>
+									<p>Graphic</p>
+								</div>
+							</div>
+						</div>
+						<!-- portfolio-card -->
+						<div class="portfolio-card grid-item digital">
+							<div class="portfolio-card-body">
+								<div class="portfolio-card-header">
+									<img src="{% static 'images/portfolio/04.jpg'%}" alt="">
+								</div>
+								<div class="portfolio-card-footer">
+									<a class="full-screen" href="{% static 'images/portfolio/04.jpg'%}" data-glightbox="" data-gallery="portfolio"><i class="ti-fullscreen"></i></a>
+									<h6 class="info-title"><a href="#" title="">Reebok Sneakers</a></h6>
+									<p>Sport, Running</p>
+								</div>
+							</div>
+						</div>
+						<!-- portfolio-card -->
+						<div class="portfolio-card grid-item photo">
+							<div class="portfolio-card-body">
+								<div class="portfolio-card-header">
+									<img src="{% static 'images/portfolio/05.jpg'%}" alt="">
+								</div>
+								<div class="portfolio-card-footer">
+									<a class="full-screen" href="{% static 'images/portfolio/05.jpg'$}" data-glightbox="" data-gallery="portfolio"><i class="ti-fullscreen"></i></a>
+									<h6 class="info-title"><a href="#" title="">Parking garage</a></h6>
+									<p>Car, Building</p>
+								</div>
+							</div>
+						</div>
+						<!-- portfolio-card -->
+						<div class="portfolio-card grid-item digital marketing photo">
+							<div class="portfolio-card-body">
+								<div class="portfolio-card-header">
+									<img src="{% static 'images/portfolio/06.jpg'%}" alt="">
+								</div>
+								<div class="portfolio-card-footer">
+									<a class="full-screen" href="{% static 'images/portfolio/06.jpg'%}" data-glightbox="" data-gallery="portfolio"><i class="ti-fullscreen"></i></a>
+									<h6 class="info-title"><a href="#" title="">The Pink Chair </a></h6>
+									<p>Workspace</p>
+								</div>
+							</div>
+						</div>
+						<!-- portfolio-card -->
+						<div class="portfolio-card grid-item photo marketing">
+							<div class="portfolio-card-body">
+								<div class="portfolio-card-header">
+									<img src="{% static 'images/portfolio/07.jpg'%}" alt="">
+								</div>
+								<div class="portfolio-card-footer">
+									<a class="full-screen" href="{% static 'images/portfolio/07.jpg'%}" data-glightbox="" data-gallery="portfolio"><i class="ti-fullscreen"></i></a>
+									<h6 class="info-title"><a href="#" title="">Black & white</a></h6>
+									<p>Photography</p>
+								</div>
+							</div>
+						</div>
+						<!-- portfolio-card -->
+						<div class="portfolio-card grid-item digital marketing">
+							<div class="portfolio-card-body">
+								<div class="portfolio-card-header">
+									<img src="{% static 'images/portfolio/08.jpg'%}" alt="">
+								</div>
+								<div class="portfolio-card-footer">
+									<a class="full-screen" href="{% static 'images/portfolio/08.jpg'%}" data-glightbox="" data-gallery="portfolio"><i class="ti-fullscreen"></i></a>
+									<h6 class="info-title"><a href="#" title="">Catch the plane</a></h6>
+									<p>Graphic</p>
+								</div>
+							</div>
+						</div>
+						<!-- portfolio-card -->
+						<div class="portfolio-card grid-item digital marketing">
+							<div class="portfolio-card-body">
+								<div class="portfolio-card-header">
+									<img src="{% static 'images/portfolio/09.jpg'%}" alt="">
+								</div>
+								<div class="portfolio-card-footer">
+									<a class="full-screen" href="{% static 'images/portfolio/09.jpg'%}" data-glightbox="" data-gallery="portfolio"><i class="ti-fullscreen"></i></a>
+									<h6 class="info-title"><a href="#" title="">Nature book</a></h6>
+									<p>Book</p>
+								</div>
+							</div>
+						</div>
+						<!-- portfolio-card -->
+						<div class="portfolio-card grid-item marketing">
+							<div class="portfolio-card-body">
+								<div class="portfolio-card-header">
+									<img src="{% static 'images/portfolio/10.jpg'%}" alt="">
+								</div>
+								<div class="portfolio-card-footer">
+									<a class="full-screen" href="{% static 'images/portfolio/10.jpg'%}" data-glightbox="" data-gallery="portfolio"><i class="ti-fullscreen"></i></a>
+									<h6 class="info-title"><a href="#" title="">Book on desk</a></h6>
+									<p>Work Desk</p>
+								</div>
+							</div>
+						</div>
+						<!-- portfolio-card -->
+						<div class="portfolio-card grid-item digital">
+							<div class="portfolio-card-body">
+								<div class="portfolio-card-header">
+									<img src="{% static 'images/portfolio/11.jpg'%}" alt="">
+								</div>
+								<div class="portfolio-card-footer">
+									<a class="full-screen" href="{% static 'images/portfolio/11.jpg'%}" data-glightbox="" data-gallery="portfolio"><i class="ti-fullscreen"></i></a>
+									<h6 class="info-title"><a href="#" title="">Work desk</a></h6>
+									<p>Workspace</p>
+								</div>
+							</div>
+						</div>
+						<!-- portfolio-card -->
+						<div class="portfolio-card grid-item photo">
+							<div class="portfolio-card-body">
+								<div class="portfolio-card-header">
+									<img src="{% static 'images/portfolio/12.jpg'%}" alt="">
+								</div>
+								<div class="portfolio-card-footer">
+									<a class="full-screen" href="{% static 'images/portfolio/12.jpg'%}" data-glightbox="" data-gallery="portfolio"><i class="ti-fullscreen"></i></a>
+									<h6 class="info-title"><a href="#" title="">Green Tree</a></h6>
+									<p>Nature</p>
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-				<!-- Team item -->
-				<div class="col-12 col-sm-3 col-md-3">
-					<div class="team-item text-center">
-						<div class="team-avatar">
-							<img src="{% static 'images/team/02.jpg'%}" alt="">
-						</div>
-						<div class="team-desc">
-							<h5 class="team-name">Jessica Mores</h5>
-							<span class="team-position">Software Developer</span>
-							<p>Expert in temporibus voluptatem odio odit ratione perferendis explicabo!</p>
-							<ul class="social-icons si-colored-on-hover">
-								<li class="social-icons-item social-facebook"><a class="social-icons-link" href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li class="social-icons-item social-instagram"><a class="social-icons-link" href="#"><i class="fab fa-instagram"></i></a></li>
-								<li class="social-icons-item social-twitter"><a class="social-icons-link" href="#"><i class="fab fa-twitter"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<!-- Team item -->
-				<div class="col-12 col-sm-3 col-md-3">
-					<div class="team-item text-center">
-						<div class="team-avatar">
-							<img src="{% static 'images/team/03.jpg'%}" alt="">
-						</div>
-						<div class="team-desc">
-							<h5 class="team-name">Emma Watson</h5>
-							<span class="team-position">Human Resource</span>
-							<p>Have more then 8 years temporibus voluptatem odio odit ratione perfere!</p>
-							<ul class="social-icons si-colored-on-hover">
-								<li class="social-icons-item social-facebook"><a class="social-icons-link" href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li class="social-icons-item social-instagram"><a class="social-icons-link" href="#"><i class="fab fa-instagram"></i></a></li>
-								<li class="social-icons-item social-twitter"><a class="social-icons-link" href="#"><i class="fab fa-twitter"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<!-- Team item -->
-				<div class="col-12 col-sm-3 col-md-3">
-					<div class="team-item text-center">
-						<div class="team-avatar">
-							<img src="{% static 'images/team/04.jpg'%}" alt="">
-						</div>
-						<div class="team-desc">
-							<h5 class="team-name">Peter Smith</h5>
-							<span class="team-position">Web Developer</span>
-							<p>With more then temporibus voluptatem odio odit ratione perferendis!</p>
-							<ul class="social-icons si-colored-on-hover">
-								<li class="social-icons-item social-facebook"><a class="social-icons-link" href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li class="social-icons-item social-instagram"><a class="social-icons-link" href="#"><i class="fab fa-instagram"></i></a></li>
-								<li class="social-icons-item social-twitter"><a class="social-icons-link" href="#"><i class="fab fa-twitter"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-
-				<!-- Team item -->
-				<div class="col-12 col-sm-3 col-md-3">
-					<div class="team-item text-center">
-						<div class="team-avatar">
-							<img src="{% static 'images/team/05.jpg'%}" alt="">
-						</div>
-						<div class="team-desc">
-							<h5 class="team-name">Nix Maxwell</h5>
-							<span class="team-position">Founder</span>
-							<p>I am voluptatem odio odit ratione perferendis explicabo!</p>
-							<ul class="social-icons si-colored-on-hover">
-								<li class="social-icons-item social-facebook"><a class="social-icons-link" href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li class="social-icons-item social-instagram"><a class="social-icons-link" href="#"><i class="fab fa-instagram"></i></a></li>
-								<li class="social-icons-item social-twitter"><a class="social-icons-link" href="#"><i class="fab fa-twitter"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<!-- Team item -->
-				<div class="col-12 col-sm-3 col-md-3">
-					<div class="team-item text-center">
-						<div class="team-avatar">
-							<img src="{% static 'images/team/06.jpg'%}" alt="">
-						</div>
-						<div class="team-desc">
-							<h5 class="team-name">Mike Ehrmantraut</h5>
-							<span class="team-position">Software Developer</span>
-							<p>Let's get temporibus voluptatem odio odit ratione perferendis explicabo!</p>
-							<ul class="social-icons si-colored-on-hover">
-								<li class="social-icons-item social-facebook"><a class="social-icons-link" href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li class="social-icons-item social-instagram"><a class="social-icons-link" href="#"><i class="fab fa-instagram"></i></a></li>
-								<li class="social-icons-item social-twitter"><a class="social-icons-link" href="#"><i class="fab fa-twitter"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<!-- Team item -->
-				<div class="col-12 col-sm-3 col-md-3">
-					<div class="team-item text-center">
-						<div class="team-avatar">
-							<img src="{% static 'images/team/07.jpg'%}" alt="">
-						</div>
-						<div class="team-desc">
-							<h5 class="team-name">Walther White</h5>
-							<span class="team-position">Human Resource</span>
-							<p>We can voluptatem odit perferendis explicabo ratione!</p>
-							<ul class="social-icons si-colored-on-hover">
-								<li class="social-icons-item social-facebook"><a class="social-icons-link" href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li class="social-icons-item social-instagram"><a class="social-icons-link" href="#"><i class="fab fa-instagram"></i></a></li>
-								<li class="social-icons-item social-twitter"><a class="social-icons-link" href="#"><i class="fab fa-twitter"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<!-- Team item -->
-				<div class="col-12 col-sm-3 col-md-3">
-					<div class="team-item text-center">
-						<div class="team-avatar">
-							<img src="{% static 'images/team/08.jpg'%}" alt="">
-						</div>
-						<div class="team-desc">
-							<h5 class="team-name">Maria Smith</h5>
-							<span class="team-position">Web Developer</span>
-							<p>I will temporibus voluptatem odio ratione perferendis explicabo!</p>
-							<ul class="social-icons si-colored-on-hover">
-								<li class="social-icons-item social-facebook"><a class="social-icons-link" href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li class="social-icons-item social-instagram"><a class="social-icons-link" href="#"><i class="fab fa-instagram"></i></a></li>
-								<li class="social-icons-item social-twitter"><a class="social-icons-link" href="#"><i class="fab fa-twitter"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- row end -->
-			<div class="row">
-				<div class="col-12 col-lg-8 mx-auto text-center mt-5">
-					<h6>We are hiring! Join our team Creative Agency Specializing in: Video Production, Web Design, Branding, Brand Strategy.</h6>
-					<a class="btn btn-grad" href="#!">Apply now!</a>
+					<!-- portfolio wrap -->
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- =======================
-	Team -->
+	Portfolio -->
+
+	<!-- =======================
+	call to action-->
+	<section class="py-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9 text-center text-md-start align-self-center">
+					<h4 class="m-0">Start a new project with us and start adventure together!</h4>
+				</div>
+				<div class="col-md-3 text-center text-md-end mt-3 mt-md-0 align-self-center ">
+					<a class="btn btn-outline-light mb-0" href="#">Let's Discuss </a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- =======================
+	call to action-->
 
 	<!-- =======================
 	footer  -->
@@ -557,7 +594,6 @@
 						</div>
 					</div>
 				</div>
-				<!-- Footer widget 4 -->
 			</div>
 		</div>
 		<div class="divider mt-3"></div>
@@ -591,12 +627,14 @@
 	<script src="{% static 'vendor/bootstrap/dist/js/bootstrap.bundle.min.js'%}"></script>
 
 	<!--Vendors-->
-	<script src="{% static 'vendor/jarallax/jarallax.min.js'%}"></script>
+	<script src="{% static 'vendor/isotope/isotope.pkgd.min.js'%}"></script>
+	<script src="{% static 'vendor/imagesLoaded/imagesloaded.js'%}"></script>
+	<script src="{% static 'vendor/glightbox/js/glightbox.js'%}"></script>
 
 	<!--Template Functions-->
 	<script src="{% static 'js/functions.js'%}"></script>
 
 </body>
 
-<!-- Mirrored from wizixo.webestica.com/team.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Sep 2023 01:13:04 GMT -->
+<!-- Mirrored from wizixo.webestica.com/portfolio-grid-column-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Sep 2023 01:13:05 GMT -->
 </html>
