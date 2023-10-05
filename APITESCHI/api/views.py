@@ -1,12 +1,13 @@
 # render es para renderizar y redirect para redireccionar
+from imaplib import _Authenticator
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import AuthenticationForm
 from rest_framework.views import APIView
 from .models import Usuario
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.http import HttpResponse  
 from django.contrib.auth import login
+from django.contrib.auth import authenticate, login
 # Create your views here.
 
 
@@ -24,26 +25,19 @@ class sign_in(APIView):
         return render(request, self.template_name)
 
     def post(self, request):
-        # Obtenemos los datos del formulario
-        #nombre_usuario = request.POST.get('Usuario', '')
-        #contrasena = request.POST.get('Contrasena', '')
-        nombre_U = request.POST['Usuario']
-        contras = request.POST['Contrasena']
+        username = request.POST.get('Usuario', '')
+        password = request.POST.get('password', '')
 
-
-        # Verificamos las credenciales manualmente
-        try:
-            user = Usuario.objects.get(Nombre_Usuario=nombre_U, Contrasena=contras)
-        except Usuario.DoesNotExist:
-            user = None
+        # Autenticar al usuario
+        user = authenticate(request, username=username, password=password)
 
         if user is not None:
-            # Iniciamos sesión si las credenciales son válidas
+            # Iniciar sesión
             login(request, user)
-            return redirect('index_9')  # Reemplaza 'index_9' con la URL a la que deseas redirigir después del inicio de sesión
+            return redirect('index_9')  # Redirigir a la página principal después del inicio de sesión
         else:
-            return render(request, self.template_name, {'error': 'Credenciales incorrectas. Por favor, inténtalo de nuevo.'})
-    
+            # Si la autenticación falla, mostrar un mensaje de error
+            return render(request, self.template_name, {'error': 'Nombre de usuario o contraseña incorrectos.'})
 #FIN DE CODIGO PARA INICIO DE SESIÓN
     
 
@@ -188,28 +182,7 @@ class editorial4(APIView):
     def get(self,request):
         return render(request,self.template_name) 
     
-#def sign_up(request):
- #   if request.method == 'GET':
-  #      print('viendo formulario')
-   # else:
-    #    print(request.POST)
-     #   print('mandando formulario')
-#
- #   return render(request, 'sign_up.')
-    
-#class sign_up(APIView):
- #   template_name="sign_up.html"
-  #  def get(self,request):
-        
-   #     if request.method == 'GET':
-    #        print('Viendo formulario')
-     #   else:
-      #      print(request.POST)
-       #     print('mandando datos')
-
-        #return render(request,'sign_up.html', {
-         #  'form': UserCreationForm
-        #})
-
-
-    
+class favoritos(APIView):
+    template_name="favoritos.html"
+    def get(self,request):
+        return render(request,self.template_name) 

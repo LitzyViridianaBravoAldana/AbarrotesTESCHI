@@ -139,6 +139,13 @@
 								<li> <a class="dropdown-item" href="{% url 'sign_up'%}">Registrar</a> </li>
 							</ul>
 						</li>
+						<!-- Menu item 6 Elements-->
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="portfolioMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">TABLA</a>
+							<ul class="dropdown-menu" aria-labelledby="portfolioMenu">
+								<li> <a class="dropdown-item" href="{% url 'favoritos'%}">tabla</a> </li>
+							</ul>
+						</li>
 
 						<!-- pruebaaaaa-->
 
@@ -155,7 +162,7 @@
 					</div>
 					<!-- extra item Btn-->
 					<div class="nav-item border-0 d-none d-lg-inline-block align-self-center">
-						<a href="#" class=" btn btn-sm btn-grad text-white mb-0">Favoritos!</a>
+						<a href="{% url 'favoritos'%}" class=" btn btn-sm btn-grad text-white mb-0">Favoritos!</a>
 					</div>
 				</div>
 				<!-- Header Extras End-->
