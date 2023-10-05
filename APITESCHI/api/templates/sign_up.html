@@ -59,6 +59,7 @@
 					</div>
 				</div>
 				<!-- Right FORMULARIO -->
+
 			
 				<div class="col-12 col-md-7 col-xl-8 mx-auto my-5">
 					<div class="row h-100">
@@ -67,6 +68,9 @@
 								<h2>"Regístrate para tener tu cuenta."</h2>
 								<h5 class="fw-light">"¡Únete hoy! Crea tu cuenta fácilmente "</h5>
 								<div class="form mt-4 ">
+
+									<form action="/sign_up/" method="post">
+										{{error}}
 									<div>
 										<p class="text-start mb-2">Nombre</p>
 										<span class="form-group"><input type="Name" name="Nombre" class="form-control" placeholder="Nombre Completo"></span>
@@ -108,20 +112,20 @@
 									</div>
 									
 										<div class="row align-items-center g-0 m-0">
-											<div class="col-6"><span class="text-muted">¿ya tienes una sesion? <a href="{% url 'sign_up'%}">Ingresar</a></span></div>
+											<div class="col-6"><span class="text-muted">¿ya tienes una sesion? <a href="{% url 'sign_in'%}">Ingresar</a></span></div>
 											<div class="col-6 text-end"><button class="btn btn-dark ">REGISTRARME</button></div>
 			
 											
 										</div>
 
-									
+									</form>
 
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-
+			
 
 			</div>
 		</div>
