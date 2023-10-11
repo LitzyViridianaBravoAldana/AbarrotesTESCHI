@@ -1,13 +1,13 @@
 # render es para renderizar y redirect para redireccionar
-from imaplib import _Authenticator
 from django.shortcuts import render, redirect
 from rest_framework.views import APIView
 from .models import Usuario
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
-from django.http import HttpResponse  
-from django.contrib.auth import login
+from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.hashers import check_password, make_password
+
 # Create your views here.
 
 
@@ -17,33 +17,7 @@ class index_9(APIView):
     def get(self,request):
         return render(request,self.template_name)
 
-#INCIO DE CODIGO PARA INICIAR SESIÓN
-class sign_in(APIView):
-    template_name = "sign_in.html"
-
-    def get(self, request):
-        return render(request, self.template_name)
-
-    def post(self, request):
-        username = request.POST.get('Usuario', '')
-        password = request.POST.get('password', '')
-
-        # Autenticar al usuario
-        user = authenticate(request, username=username, password=password)
-
-        if user is not None:
-            # Iniciar sesión
-            login(request, user)
-            return redirect('index_9')  # Redirigir a la página principal después del inicio de sesión
-        else:
-            # Si la autenticación falla, mostrar un mensaje de error
-            return render(request, self.template_name, {'error': 'Nombre de usuario o contraseña incorrectos.'})
-#FIN DE CODIGO PARA INICIO DE SESIÓN
-    
-
-#INICIO DE CODIGO PARA REGISTRAR NUEVOS USUARIOS
-    
-
+from django.contrib.auth.hashers import make_password
 
 class sign_up(APIView):
     template_name = "sign_up.html"
@@ -58,42 +32,86 @@ class sign_up(APIView):
         contra2 = request.POST.get('Contra2', '')
         nombre = request.POST.get('Nombre', '')
         apellido_pa = request.POST.get('ApellidoPa', '')
-        apellido_ma = request.POST.get('ApellidoMa', '')
-        telefono = request.POST.get('Telefono', '')
         correo = request.POST.get('Correo', '')
 
         # Verificamos si las contraseñas son iguales
         if contra1 != contra2:
-            return HttpResponse('La Contraseña no es la misma, verifique')
+           return render(request, self.template_name, {'error': 'La Contraseña no es la misma, verifique'})
 
-        # Creamos una instancia de Usuario con los datos del formulario
-        user = Usuario(
-            Nombre_Usuario=nombre_usuario,
-            Contrasena=contra1,
-            Nombre=nombre,
-            Apellido_Pa=apellido_pa,
-            Apellido_Ma=apellido_ma,
-            Telefono=telefono,
-            Correo=correo
-        )
+        try:
+            # Creamos una instancia de Usuario con los datos del formulario
+            user = Usuario(
+                Nombre_Usuario=nombre_usuario,
+                Nombre=nombre,
+                Apellido_Pa=apellido_pa,
+                Correo=correo,
+                Contrasena=contra1
+            )
 
-        # Guardamos el usuario en la base de datos
-        user.save()
+            # Establecemos la contraseña utilizando make_password
+            user.Contrasena = make_password(contra1)
 
-        # Enviamos un correo de bienvenida
-        subject = 'Registro para TeschiWATT'
-        message = 'Bienvenido a TESCHIWATT, gracias por registrarte en la pagina de libros más variada para ti'
-        from_email = 'teschiwatt@gmail.com'
-        recipient_list = [request.POST.get('Correo', '')]
+            # Guardamos el usuario en la base de datos
+            user.save()
 
-        # Utiliza la plantilla de correo electrónico HTML
-        html_message = render_to_string('correo_b.html', {})
+            # Enviamos un correo de bienvenida
+            subject = 'Registro para TeschiWATT'
+            message = 'Bienvenido a TESCHIWATT, gracias por registrarte en la página de libros más variada para ti'
+            from_email = 'teschiwatt@gmail.com'
+            recipient_list = [request.POST.get('Correo', '')]
 
-        send_mail(subject, message, from_email, recipient_list, html_message=html_message)
-        # Redirigimos a la página de inicio de sesión
-        return redirect('sign_in')
+            # Utiliza la plantilla de correo electrónico HTML
+            html_message = render_to_string('correo_b.html', {'username': nombre_usuario, 'password': contra1})
 
-#FIN DEL CODIGO DE NUEVOS USUARIOS
+            send_mail(subject, message, from_email, recipient_list, html_message=html_message)
+
+            # Redirigimos a la página de inicio de sesión
+            return redirect('sign_in')
+
+        except Exception as e:
+            # Manejar cualquier excepción y mostrar el mensaje de error apropiado
+            return render(request, self.template_name, {'error': f'Error al registrar usuario: {e}'})
+
+
+# INCIO DE CODIGO PARA INICIAR SESIÓN
+
+class sign_in(APIView):
+    template_name = "sign_in.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request):
+        correo = request.POST.get('correo', '').strip()
+        contrasena = request.POST.get('password', '').strip()
+
+        print(f'Correo: {correo}, Contraseña: {contrasena}')
+
+        try:
+            # Autenticar al usuario por correo electrónico
+            user = authenticate(request, Correo=correo, password=contrasena)
+
+            if user is not None:
+                # Contraseña válida, iniciar sesión
+                print(f'Usuario autenticado: {user}')
+                login(request, user)
+                return redirect('index_9')
+            else:
+                # Usuario no encontrado o contraseña incorrecta
+                print('Autenticación fallida. Usuario:', user)
+                return render(request, 'sign_in.html', {'error': 'Correo o contraseña incorrectos.'})
+
+        except Exception as e:
+            # Manejar cualquier excepción y mostrar el mensaje de error apropiado
+            print(f'Error al autenticar usuario: {e}')
+            return render(request, 'sign_in.html', {'error': f'Error al autenticar usuario: {e}'})
+
+
+# FIN DE CODIGO PARA INICIO DE SESIÓN
+
+
+
+
 
 
 class team(APIView):

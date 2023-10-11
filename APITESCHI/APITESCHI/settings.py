@@ -71,6 +71,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'APITESCHI.wsgi.application'
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+# settings.py
+
+
+
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -137,6 +144,7 @@ EMAIL_HOST_USER = 'teschiwatt@gmail.com'
 EMAIL_HOST_PASSWORD = 'cuty dlow zrwf tvck'
 
 #VISTA
+
 
 
 

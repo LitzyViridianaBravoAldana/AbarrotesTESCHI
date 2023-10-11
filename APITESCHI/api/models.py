@@ -7,11 +7,10 @@ class Usuario(models.Model):
     Contrasena = models.TextField(db_column='Contrasena')
     Nombre = models.TextField(db_column='Nombre')
     Apellido_Pa = models.CharField(max_length=20,db_column='Apellido_P')
-    Apellido_Ma = models.CharField(max_length=20,db_column='Apellido_M')
-    Telefono = models.IntegerField(db_column='Telefono')
     Correo = models.EmailField(unique=True,db_column='Correo')
     class Meta:
         db_table='Usuarios'
+
 class Genero(models.Model):
     id_Genero = models.AutoField(primary_key=True,db_column='Id_Categoria')
     Descripcion = models.TextField(unique=True,db_column='Descripcion')
