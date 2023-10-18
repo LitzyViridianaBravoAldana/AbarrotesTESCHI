@@ -4,9 +4,10 @@ from rest_framework.views import APIView
 from .models import Usuario
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
-from django.http import HttpResponse
-from django.contrib.auth import authenticate, login
 from django.contrib.auth.hashers import check_password, make_password
+from django.utils.html import strip_tags
+import random
+import string
 
 # Create your views here.
 
@@ -76,37 +77,53 @@ class sign_up(APIView):
 # INCIO DE CODIGO PARA INICIAR SESIÓN
 
 class sign_in(APIView):
+
     template_name = "sign_in.html"
 
     def get(self, request):
         return render(request, self.template_name)
 
     def post(self, request):
-        correo = request.POST.get('correo', '').strip()
-        contrasena = request.POST.get('password', '').strip()
 
-        print(f'Correo: {correo}, Contraseña: {contrasena}')
+        if "acceso" in request.POST:
 
-        try:
-            # Autenticar al usuario por correo electrónico
-            user = authenticate(request, Correo=correo, password=contrasena)
+            # Procesar Login
 
-            if user is not None:
-                # Contraseña válida, iniciar sesión
-                print(f'Usuario autenticado: {user}')
-                login(request, user)
-                return redirect('index_9')
+            email = request.POST.get("correo")
+            password1 = request.POST.get("password")
+            # Buscar un usuario con el correo electrónico proporcionado
+            try:
+
+                usuario = Usuario.objects.get(Correo=email)  # , password=password1
+                print('correo', usuario)
+                # usuario = authenticate(request, correoElectronico=email, password=password1)
+
+                valorObtenido = usuario.Correo
+
+            except Usuario.DoesNotExist:
+
+                valorObtenido = None
+            # usuario = authenticate(request, correElectronico=email, password=password1)
+            contra = usuario.Contrasena
+            if valorObtenido is not None:
+                # La contraseña es correcta, inicia sesión
+                # login(request, usuario)
+                if check_password(password1, contra):
+
+                    return redirect("index_9")  # Redirige a la página 'home' después del inicio de sesión
+
+                else:
+
+                    mensaje = "Credenciales incorrectas. Por favor, inténtalo de nuevo. Contraseña"
+
+                    return render(request, self.template_name, {"error": mensaje})
             else:
-                # Usuario no encontrado o contraseña incorrecta
-                print('Autenticación fallida. Usuario:', user)
-                return render(request, 'sign_in.html', {'error': 'Correo o contraseña incorrectos.'})
 
-        except Exception as e:
-            # Manejar cualquier excepción y mostrar el mensaje de error apropiado
-            print(f'Error al autenticar usuario: {e}')
-            return render(request, 'sign_in.html', {'error': f'Error al autenticar usuario: {e}'})
+                mensaje = "Credenciales incorrectas. Por favor, inténtalo de nuevo. CORREO"
 
+                return render(request, self.template_name, {"error": mensaje})
 
+            # Lógica de login aquí
 # FIN DE CODIGO PARA INICIO DE SESIÓN
 
 
@@ -204,3 +221,59 @@ class favoritos(APIView):
     template_name="favoritos.html"
     def get(self,request):
         return render(request,self.template_name) 
+    
+class password_recovery(APIView):
+    template_name="password_recovery.html"
+    def get(self,request):
+        return render(request,self.template_name) 
+    def post(self,request):
+        if "recupera" in request.POST:
+            # Recuperar pasword
+            email = request.POST["re_correo"]
+
+            # Verifica si el correo ya existe en la base de datos
+
+            if Usuario.objects.filter(Correo=email).exists():
+                # Obtén un usuario específico por su correo electrónico
+
+                usuario = Usuario.objects.get(Correo=email)
+                # Genera una contraseña aleatoria de 12 caracteres que incluye letras mayúsculas, letras minúsculas y dígitos
+                nueva_contrasena = ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(10))
+                # Almacena la contraseña aleatoria como la nueva contraseña del usuario (debes cifrarla)
+                usuario.Contrasena = make_password(nueva_contrasena)
+                # Guarda el usuario en la base de datos para actualizar la contraseña
+                usuario.save()
+                # Luego, prepara y envía el correo electrónico
+
+                subject = "WATTESCHI Recuperación de Contraseña"
+
+                from_email = "teschiwatt@gmail.com"
+
+                recipient_list = [request.POST["re_correo"]]
+
+                # Utiliza la plantilla HTML para el correo electrónico
+
+                html_message = render_to_string("correo_p.html",{
+
+                                    "new_password": " "
+
+                                    + nueva_contrasena
+
+                                },
+
+                            )
+
+                            # {{nombre}} es como se llama la variable que mandamos
+                            # Envía el correo electrónico
+
+                send_mail(subject,strip_tags(html_message),from_email,recipient_list,html_message=html_message,)
+
+                return redirect("sign_in")
+
+        else:
+
+            mensaje = "Lo siento el correo no existe"
+
+            return render(request, self.template_name, {"mensajeo": mensaje})
+
+        # Logica de recuperacion de pasword

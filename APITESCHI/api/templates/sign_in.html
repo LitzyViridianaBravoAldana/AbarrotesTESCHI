@@ -67,14 +67,13 @@
 								<h2 class="">Inicia sesión en tu cuenta.</h2>
 								<h5 class="fw-light"> ¡Es bueno verte! Por favor, inicia sesión con tu cuenta.</h5>
 								<div class="form mt-4 ">
-									{{error}}
+							
 									<form method="post" action="/sign_in/">
 										{% csrf_token %}
-
-
+										{{error}}
 
 										<div>
-											<p class="text-start mb-2">CORreo</p>
+											<p class="text-start mb-2">CORREO</p>
 											<span class="form-group"><input type="text" name="correo" class="form-control" placeholder="COLOCA TU CORREO" required></span>
 										</div>
 										<div>
@@ -84,8 +83,12 @@
 											<span class="form-group"><input type="password" name="password" class="form-control" placeholder="*********" required></span>
 										</div>
 										<div class="row align-items-center g-0 m-0">
+											<div class="d-flex justify-content-between align-items-center">
+												<p class="text-start mb-2">Password</p>
+												<a class="text-muted small mb-2" href="{% url 'password_recovery'%}">¿olvidades tu contraseña? Has clic aquí.</a>
+											</div>
 											<div class="col-6 col-md-8"><span class="text-muted">¿No tienes una cuenta? <a href="{% url 'sign_up'%}">Registrarse</a></span></div>
-											<div class="col-6 col-md-4 text-end"><button type="submit" class="btn btn-dark ">Vamos a Rockear</button></div>
+											<div class="col-6 col-md-4 text-end"><button name="acceso" type="submit" class="btn btn-dark ">Vamos a Rockear</button></div>
 										</div>
 										<div-- class="custom-control custom-checkbox me-sm-2 mb-4 d-flex">
 											<!-- <label class="form-check-label ms-2" for="exampleCheck1"><a href="{% url 'index_9'%}">Regresar al Menu</a></label> -->
