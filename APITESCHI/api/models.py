@@ -98,3 +98,18 @@ class Libro_has_Genero(models.Model):
     Fk_Id_Genero = models.ForeignKey(Genero,on_delete=models.CASCADE,db_column='Fk_Id_Genero')
     class Meta:
         db_table='Libro_has_Genero'
+
+
+
+class encuestaSatisfaccion(models.Model):
+    id_encuesta = models.TextField(db_column='id_encuesta')
+    correo = models.TextField(db_column='Dirección de correo electrónico')
+    pregunta1 = models.TextField(db_column='¿Qué tipo de paleta de colores prefieres para el diseño del sistema web de la biblioteca?')
+    pregunta2 = models.TextField(db_column='¿Qué opinas sobre la personalización de tu perfil en el sistema web de la biblioteca?')
+    pregunta3 = models.TextField(db_column='¿Cómo te gustaría que se presenten los resultados de búsqueda en el sistema web de la biblioteca?')
+    pregunta4 = models.TextField(db_column='¿Cuál de las siguientes opciones de búsqueda preferirías en el sistema web de la biblioteca?')
+    pregunta5 = models.TextField(db_column='¿Qué función consideras más importante para un acceso rápido en la página principal del sistema web de la biblioteca?')
+    pregunta6 = models.TextField(db_column='¿Dónde preferirías ver las notificaciones en el sistema web de la biblioteca?')
+    pregunta7 = models.TextField(db_column='¿Te gustaría poder personalizar las notificaciones que recibes en el sistema web de la biblioteca?')
+    class Meta:
+        db_table = 'encuestaSatisfaccion'

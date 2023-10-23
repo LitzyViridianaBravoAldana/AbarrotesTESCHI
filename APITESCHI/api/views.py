@@ -8,7 +8,10 @@ from django.contrib.auth.hashers import check_password, make_password
 from django.utils.html import strip_tags
 import random
 import string
-
+from .models import  encuestaSatisfaccion # Asegúrate de importar tu modelo
+import csv 
+# importaciones para graficos
+from django.db.models import Count
 # Create your views here.
 
 
@@ -84,6 +87,29 @@ class sign_in(APIView):
         return render(request, self.template_name)
 
     def post(self, request):
+
+        # Inicio de codigo para importacion csv de cuestionario
+
+        # archivo_csv = 'C:/Users/Litzy Aldana/Music/Base de datos/Encuesta.csv'  # Ruta al archivo CSV que deseas importar
+        
+        # with open(archivo_csv, 'r', encoding='utf-8') as file:
+        #     csv_reader = csv.DictReader(file)
+        #     for row in csv_reader:
+        #         nuevo_registro = encuestaSatisfaccion(
+        #             correo=row['Dirección de correo electrónico'],
+        #             pregunta1=row['¿Qué tipo de paleta de colores prefieres para el diseño del sistema web de la biblioteca?'],
+        #             pregunta2=row['¿Qué opinas sobre la personalización de tu perfil en el sistema web de la biblioteca?'],
+        #             pregunta3=row['¿Cómo te gustaría que se presenten los resultados de búsqueda en el sistema web de la biblioteca?'],
+        #             pregunta4=row['¿Cuál de las siguientes opciones de búsqueda preferirías en el sistema web de la biblioteca?'],
+        #             pregunta5=row['¿Qué función consideras más importante para un acceso rápido en la página principal del sistema web de la biblioteca?'],
+        #             pregunta6=row['¿Dónde preferirías ver las notificaciones en el sistema web de la biblioteca?'],
+        #             pregunta7=row['¿Te gustaría poder personalizar las notificaciones que recibes en el sistema web de la biblioteca?']
+        #             # Asigna los campos y columnas correspondientes
+        #         )
+        #         nuevo_registro.save()
+        # return render(request, 'index_9.html')
+
+        # fin de codigo de cuestioanrio
 
         if "acceso" in request.POST:
 
@@ -222,6 +248,69 @@ class favoritos(APIView):
     def get(self,request):
         return render(request,self.template_name) 
     
+#GRAFICAS
+class graficas(APIView):
+    template_name="graficas.html"
+    def post(self,request):
+        return render(request, self.template_name)
+
+    def get(self, request):
+    
+            # Pregunta 1
+            respuestas1 = encuestaSatisfaccion.objects.values('pregunta1').annotate(total=Count('pregunta1'))
+            etiquetas1 = [respuesta['pregunta1'] for respuesta in respuestas1]
+            valores1 = [respuesta['total'] for respuesta in respuestas1]
+    
+            # Pregunta 2
+            respuestas2 = encuestaSatisfaccion.objects.values('pregunta2').annotate(total=Count('pregunta2'))
+            etiquetas2 = [respuesta['pregunta2'] for respuesta in respuestas2]
+            valores2 = [respuesta['total'] for respuesta in respuestas2]
+    
+            # Pregunta 3
+            respuestas3 = encuestaSatisfaccion.objects.values('pregunta3').annotate(total=Count('pregunta3'))
+            etiquetas3 = [respuesta['pregunta3'] for respuesta in respuestas3]
+            valores3 = [respuesta['total'] for respuesta in respuestas3]
+    
+            # Pregunta 4
+            respuestas4 = encuestaSatisfaccion.objects.values('pregunta4').annotate(total=Count('pregunta4'))
+            etiquetas4 = [respuesta['pregunta4'] for respuesta in respuestas4]
+            valores4 = [respuesta['total'] for respuesta in respuestas4]
+    
+            # Pregunta 5
+            respuestas5 = encuestaSatisfaccion.objects.values('pregunta5').annotate(total=Count('pregunta5'))
+            etiquetas5 = [respuesta['pregunta5'] for respuesta in respuestas5]
+            valores5 = [respuesta['total'] for respuesta in respuestas5]
+    
+            # Pregunta 6
+            respuestas6 = encuestaSatisfaccion.objects.values('pregunta6').annotate(total=Count('pregunta6'))
+            etiquetas6 = [respuesta['pregunta6'] for respuesta in respuestas6]
+            valores6 = [respuesta['total'] for respuesta in respuestas6]
+    
+            # Pregunta 7
+            respuestas7 = encuestaSatisfaccion.objects.values('pregunta7').annotate(total=Count('pregunta7'))
+            etiquetas7 = [respuesta['pregunta7'] for respuesta in respuestas7]
+            valores7 = [respuesta['total'] for respuesta in respuestas7]
+    
+    
+    
+            # Pasa los datos a la plantilla
+            return render(request, self.template_name, {'etiquetasPregunta1': etiquetas1,
+                                                        'valoresPregunta1': valores1,
+                                                    'etiquetasPregunta2': etiquetas2,
+                                                    'valoresPregunta2': valores2,
+                                                    'etiquetasPregunta3': etiquetas3,
+                                                    'valoresPregunta3': valores3,
+                                                    'etiquetasPregunta4': etiquetas4,
+                                                    'valoresPregunta4': valores4,
+                                                    'etiquetasPregunta5': etiquetas5,
+                                                    'valoresPregunta5': valores5,
+                                                    'etiquetasPregunta6': etiquetas6,
+                                                    'valoresPregunta6': valores6,
+                                                    'etiquetasPregunta7': etiquetas7,
+                                                    'valoresPregunta7': valores7})
+#fin de graficas    
+    
+    
 class password_recovery(APIView):
     template_name="password_recovery.html"
     def get(self,request):
@@ -277,3 +366,6 @@ class password_recovery(APIView):
             return render(request, self.template_name, {"mensajeo": mensaje})
 
         # Logica de recuperacion de pasword
+
+
+
